@@ -1,6 +1,8 @@
 # claude-skills
 
-Custom skills for the Claude Code agent.
+[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=fe8e86)](https://github.com/sponsors/saturdaymp)
+
+Custom skills for the Claude Code agent that Saturday Morning Productions finds useful.
 
 ## Prerequisites
 
