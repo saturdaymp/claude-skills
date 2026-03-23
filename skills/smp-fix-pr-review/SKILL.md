@@ -21,12 +21,12 @@ The user provided this PR review URL: $ARGUMENTS
 
 2. Fetch the review comment and its thread:
    ```
-   gh api repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_id}
+   gh api repos/{owner}/{repo}/pulls/comments/{comment_id}
    ```
 
 3. Determine the root comment ID (the top-level review comment for the thread), then fetch any replies in the same thread:
    ```
-   root_comment_id=$(gh api repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_id} --jq '.in_reply_to_id // .id')
+   root_comment_id=$(gh api repos/{owner}/{repo}/pulls/comments/{comment_id} --jq '.in_reply_to_id // .id')
    gh api repos/{owner}/{repo}/pulls/{pr_number}/comments --jq "[.[] | select(.id == ${root_comment_id} or .in_reply_to_id == ${root_comment_id})]"
    ```
 
@@ -52,7 +52,7 @@ The user provided this PR review URL: $ARGUMENTS
    - Ask the user: "Would you like me to reply to the PR comment explaining why this feedback doesn't apply, and resolve the conversation?"
    - If the user agrees:
      - Draft a polite reply explaining why the feedback is not applicable. **STOP and show the draft to the user for confirmation before posting.**
-     - Post the reply using: `gh api repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_id}/replies -f body="<reply>"`
+     - Post the reply using: `gh api repos/{owner}/{repo}/pulls/comments/{comment_id}/replies -f body="<reply>"`
      - Resolve the conversation (see Phase 7).
    - **STOP here. Do not proceed to Phase 3.**
 
@@ -106,7 +106,7 @@ The user provided this PR review URL: $ARGUMENTS
 
 4. Post the reply:
    ```
-   gh api repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_id}/replies -f body="<confirmed reply>"
+   gh api repos/{owner}/{repo}/pulls/comments/{comment_id}/replies -f body="<confirmed reply>"
    ```
 
 ## Phase 7 - Resolve Conversation
