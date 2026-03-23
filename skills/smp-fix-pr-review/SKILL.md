@@ -1,12 +1,12 @@
 ---
-description: Fix a Copilot PR review comment - evaluate, fix, commit, reply, and resolve
+name: smp-fix-pr-review
+description: This skill should be used when the user wants to fix, address, or respond to a PR review comment on GitHub. Common triggers include "fix this PR review comment", "address this review feedback", "handle this PR comment", or when the user provides a GitHub PR review comment URL. The skill evaluates whether the feedback is valid, implements a fix if needed, commits the change, replies to the comment, and resolves the conversation.
 argument-hint: <pr-review-url>
-allowed-tools: Bash(gh:*), Bash(git:*), Bash(jq:*), Read, Grep, Glob, Write, Edit, Agent
 ---
 
 # Fix PR Review Comment
 
-Process a Copilot PR review comment: evaluate validity, implement a fix if valid, commit, reply, and resolve.
+Process a PR review comment: evaluate validity, implement a fix if valid, commit, reply, and resolve.
 
 ## Input
 
@@ -110,45 +110,19 @@ The user provided this PR review URL: $ARGUMENTS
 
 ## Phase 7 - Resolve Conversation
 
-1. Get the review thread node ID. Query the PR's review threads and match by comment database ID:
-   ```
-   gh api graphql -f query='
-     query($owner: String!, $repo: String!, $pr: Int!) {
-       repository(owner: $owner, name: $repo) {
-         pullRequest(number: $pr) {
-           reviewThreads(first: 100) {
-             nodes {
-               id
-               isResolved
-               comments(first: 1) {
-                 nodes {
-                   databaseId
-                 }
-               }
-             }
-           }
-         }
-       }
-     }
-   ' -f owner="{owner}" -f repo="{repo}" -F pr={pr_number}
-   ```
+1. Get the review thread node ID using the GraphQL query in `references/graphql-queries.md`. Match the thread whose first comment has `databaseId` equal to the comment ID (or its parent if the comment is a reply).
 
-2. Find the thread whose first comment has `databaseId` matching the comment ID (or its parent if the comment is a reply).
+2. Resolve the thread using the GraphQL mutation in `references/graphql-queries.md`.
 
-3. Resolve the thread:
-   ```
-   gh api graphql -f query='
-     mutation($threadId: ID!) {
-       resolveReviewThread(input: { threadId: $threadId }) {
-         thread {
-           isResolved
-         }
-       }
-     }
-   ' -f threadId="{thread_node_id}"
-   ```
+3. Confirm to the user that the conversation has been resolved.
 
-4. Confirm to the user that the conversation has been resolved.
+## Error Handling
+
+- If the URL cannot be parsed (missing owner, repo, PR number, or comment ID), report the issue and ask the user to provide a valid GitHub PR review comment URL.
+- If `gh api` calls fail (e.g., 404, 403), report the error clearly and ask how to proceed. Common causes: PR doesn't exist, insufficient permissions, or `gh` not authenticated.
+- If the PR is already merged or closed, inform the user and ask whether to continue (the fix may still be relevant for a follow-up).
+- If the review thread is already resolved, inform the user and skip Phase 7.
+- Never retry failed API calls silently. Always report the error and ask the user for guidance.
 
 ## Important Notes
 
