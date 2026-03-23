@@ -24,9 +24,10 @@ The user provided this PR review URL: $ARGUMENTS
    gh api repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_id}
    ```
 
-3. Fetch any replies in the same thread by getting all comments and filtering by `in_reply_to_id` matching the comment ID, or where the comment itself has an `in_reply_to_id` pointing to a parent:
+3. Determine the root comment ID (the top-level review comment for the thread), then fetch any replies in the same thread:
    ```
-   gh api repos/{owner}/{repo}/pulls/{pr_number}/comments --jq '[.[] | select(.id == {comment_id} or .in_reply_to_id == {comment_id})]'
+   root_comment_id=$(gh api repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_id} --jq '.in_reply_to_id // .id')
+   gh api repos/{owner}/{repo}/pulls/{pr_number}/comments --jq "[.[] | select(.id == ${root_comment_id} or .in_reply_to_id == ${root_comment_id})]"
    ```
 
 4. Display the review comment to the user, including:
