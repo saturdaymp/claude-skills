@@ -1,0 +1,13 @@
+{
+  "name": "claude-skills",
+  "owner": {
+    "name": "Saturday Morning Productions Inc."
+  },
+  "plugins": [
+    {
+      "name": "claude-skills",
+      "source": ".",
+      "description": "Custom Claude Code skills for PR review workflows"
+    }
+  ]
+}
