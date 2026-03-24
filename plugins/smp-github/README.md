@@ -17,7 +17,7 @@ Fixes, addresses, or responds to a GitHub PR review comment. Given a review comm
 **Usage:**
 
 ```
-/smp-fix-pr-review https://github.com/owner/repo/pull/123#discussion_r1234567
+/smp-apply-github-pr-feedback https://github.com/owner/repo/pull/123#discussion_r1234567
 ```
 
 You can also describe what you want naturally — e.g., "fix this PR review comment" and paste the URL.
