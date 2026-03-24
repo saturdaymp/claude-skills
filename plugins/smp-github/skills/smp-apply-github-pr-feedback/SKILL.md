@@ -1,5 +1,5 @@
 ---
-name: smp-fix-pr-review
+name: smp-apply-github-pr-feedback
 description: This skill should be used when the user wants to fix, address, or respond to a PR review comment on GitHub. Common triggers include "fix this PR review comment", "address this review feedback", "handle this PR comment", or when the user provides a GitHub PR review comment URL. The skill evaluates whether the feedback is valid, implements a fix if needed, commits the change, replies to the comment, and resolves the conversation.
 argument-hint: <pr-review-url>
 ---
