@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "claude-skills",
-      "source": ".",
+      "source": "./",
       "description": "Custom Claude Code skills for PR review workflows"
     }
   ]
