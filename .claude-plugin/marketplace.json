@@ -10,7 +10,7 @@
       "name": "saturdaymp-apply-github-pr-feedback",
       "description": "Validate and apply GitHub PR feedback.",
       "category": "development",
-      "source": "./plugins/smp-apply-github-pr-feedback",
+      "source": "./plugins/smp-github",
       "homepage": "https://github.com/saturdaymp/claude-plugins"
     }
   ]
