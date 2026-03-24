@@ -7,7 +7,7 @@
     {
       "name": "claude-skills",
       "source": ".",
-      "description": "Custom Claude Code skills for PR review workflows"
+      "description": "Custom Claude Code skills that SaturdayMP finds useful and you might too."
     }
   ]
 }
