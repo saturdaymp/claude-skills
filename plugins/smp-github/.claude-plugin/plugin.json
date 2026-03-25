@@ -1,0 +1,8 @@
+{
+  "name": "smp-apply-github-pr-feedback",
+  "version": "1.0.0",
+  "description": "Validate and apply GitHub PR feedback.",
+  "author": {
+    "name": "Saturday Morning Productions Inc."
+  }
+}

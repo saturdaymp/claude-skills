@@ -1,13 +1,17 @@
 {
-  "name": "claude-skills",
+  "name": "saturdaymp-claude-plugins",
+  "description": "Plugins that Saturday Morning Productions finds useful and hopefully you do too.",
   "owner": {
-    "name": "Saturday Morning Productions Inc."
+    "name": "Saturday Morning Productions Inc.",
+    "email": "support@saturdaymp.com"
   },
   "plugins": [
     {
-      "name": "claude-skills",
-      "source": ".",
-      "description": "Custom Claude Code skills that SaturdayMP finds useful and you might too."
+      "name": "smp-apply-github-pr-feedback",
+      "description": "Validate and apply GitHub PR feedback.",
+      "category": "development",
+      "source": "./plugins/smp-github",
+      "homepage": "https://github.com/saturdaymp/claude-plugins"
     }
   ]
 }
