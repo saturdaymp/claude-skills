@@ -7,8 +7,8 @@
   },
   "plugins": [
     {
-      "name": "smp-apply-github-pr-feedback",
-      "description": "Validate and apply GitHub PR feedback.",
+      "name": "smp-github",
+      "description": "Useful tools for interacting with GitHub.",
       "category": "development",
       "source": "./plugins/smp-github",
       "homepage": "https://github.com/saturdaymp/claude-plugins"

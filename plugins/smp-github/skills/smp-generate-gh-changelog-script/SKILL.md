@@ -1,5 +1,5 @@
 ---
-name: smp-generate-changelog
+name: smp-generate-gh-changelog-script
 description: This skill should be used when the user wants to generate or update a CHANGELOG.md file from GitHub releases. Common triggers include "generate changelog", "create changelog", "update changelog from releases", "build changelog", or "add changelog script". It creates a standalone bash script that fetches GitHub releases and generates a formatted CHANGELOG.md, so changelog generation works without Claude.
 argument-hint: "[output-path]"
 ---
