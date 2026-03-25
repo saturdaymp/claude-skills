@@ -1,7 +1,7 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
-This file is auto-generated from [GitHub releases](https://github.com/saturdaymp/claude-skills/releases).
+This file is auto-generated from [GitHub releases](https://github.com/saturdaymp/claude-plugins/releases).
 
 ## [1.0.0] - 2026-03-24
 
@@ -18,5 +18,5 @@ Initial release of the SaturdayMP Claude Skills.
 
 **Full Changelog**: https://github.com/saturdaymp/claude-skills/commits/v1.0.0
 
-[1.0.0]: https://github.com/saturdaymp/claude-skills/releases/tag/v1.0.0
+[1.0.0]: https://github.com/saturdaymp/claude-plugins/releases/tag/v1.0.0
 
