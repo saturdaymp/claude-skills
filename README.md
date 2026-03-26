@@ -37,7 +37,7 @@ Load the local marketplace:
 Install plugins:
 
 ```
-/plugin install smp-apply-github-pr-feedback@saturdaymp/claude-plugins
+/plugin install smp-github@saturdaymp/claude-plugins
 ```
 
 Don't forget to restart Claude Code or try reloading the plugins:
