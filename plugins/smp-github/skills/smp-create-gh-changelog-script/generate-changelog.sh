@@ -40,8 +40,7 @@ if ! git rev-parse --is-inside-work-tree &> /dev/null; then
 fi
 
 # --- Detect repository ---
-REPO=$(gh repo view --json nameWithOwner --jq '.nameWithOwner')
-if [[ -z "$REPO" ]]; then
+if ! REPO=$(gh repo view --json nameWithOwner --jq '.nameWithOwner') || [[ -z "$REPO" ]]; then
   echo "Error: Could not determine GitHub repository." >&2
   exit 1
 fi
