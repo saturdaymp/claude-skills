@@ -111,11 +111,13 @@ The user provided this PR review URL: $ARGUMENTS
 
 ## Phase 7 - Resolve Conversation
 
-1. Get the review thread node ID using the GraphQL query in `references/graphql-queries.md`. Match the thread whose first comment has `databaseId` equal to the comment ID (or its parent if the comment is a reply).
+1. Get the review thread node ID by running the fetch query from `references/graphql-queries.md`. Copy the query template exactly, replacing the placeholder values (OWNER, REPO, PR_NUMBER) with the actual values. Do NOT use GraphQL variables or `-f`/`-F` flags for variable substitution — all values must be inlined directly in the query string. Match the thread whose first comment has `databaseId` equal to the root comment ID from Phase 1.
 
-2. Resolve the thread using the GraphQL mutation in `references/graphql-queries.md`.
+2. If `pageInfo.hasNextPage` is true, paginate using the subsequent pages query variant from the reference file, replacing END_CURSOR with the cursor value from the response.
 
-3. Confirm to the user that the conversation has been resolved.
+3. Resolve the thread by running the resolve mutation from `references/graphql-queries.md`. Copy the mutation template exactly, replacing THREAD_ID with the actual thread node ID. Do NOT use GraphQL variables — inline the thread ID directly in the query string.
+
+4. Confirm to the user that the conversation has been resolved.
 
 ## Error Handling
 
